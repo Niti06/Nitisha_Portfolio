@@ -6,6 +6,10 @@ import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import Testimonials from "./components/Testimonials";
 import Contact from "./components/Contact";
+import Experience from "./components/Experience";
+import Achievements from "./components/Achievements";
+import SkillsMarquee from "./components/SkillsMarquee";
+import ScrollReveal from "./components/ScrollReveal";
 
 
 import { ToastContainer } from "react-toastify";
@@ -19,10 +23,13 @@ function App() {
 
       <Navbar />
       <Hero />
+      <SkillsMarquee />
       <About />
       <Projects />
+      <Experience />
       <Skills />
       <Testimonials />
+      <Achievements />
       <Contact />
       <Footer/>
     </main>

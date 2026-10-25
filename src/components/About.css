@@ -1,0 +1,288 @@
+
+/* About section */
+.about-section {
+  background: #000;
+  color: #f5f5f5;
+  padding: 88px 24px;
+  border-bottom: 1px solid #242424;
+}
+
+.about-container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+/* Section heading */
+.about-heading {
+  margin-bottom: 64px;
+  text-align: center;
+}
+
+.about-eyebrow {
+  margin-bottom: 12px;
+  color: #a3a3a3;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.about-title {
+  margin: 0;
+  color: #f5f5f5;
+  font-size: 36px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+/* Introduction */
+.about-intro {
+  margin-bottom: 72px;
+}
+
+.about-headline {
+  max-width: 900px;
+  margin: 0;
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.045em;
+}
+
+.about-headline span {
+  color: #22d3ee;
+}
+
+.about-description {
+  max-width: 900px;
+  margin: 28px 0 0;
+  padding-left: 20px;
+  border-left: 1px solid #525252;
+  color: #bdbdbd;
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+/* Shared subsection styling */
+.about-education,
+.about-focus {
+  margin-top: 48px;
+}
+
+.about-subsection-heading {
+  margin-bottom: 28px;
+}
+
+.about-subsection-label {
+  margin-bottom: 8px;
+  color: #a3a3a3;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.about-subsection-title {
+  margin: 0;
+  font-size: 27px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+/* Education: simple timeline, no enclosing card */
+.about-education-list {
+  margin-left: 7px;
+  padding-left: 28px;
+  border-left: 1px solid #383838;
+}
+
+.about-education-item {
+  position: relative;
+  padding: 0 0 34px;
+}
+
+.about-education-item:last-child {
+  padding-bottom: 0;
+}
+
+.about-education-item::before {
+  position: absolute;
+  top: 5px;
+  left: -33px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #a3a3a3;
+  content: "";
+}
+
+.about-education-date {
+  margin: 0 0 9px;
+  color: #a3a3a3;
+  font-size: 13px;
+}
+
+.about-education-degree {
+  margin: 0 0 7px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.about-education-detail {
+  margin: 4px 0;
+  color: #bdbdbd;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.about-education-score {
+  display: inline-block;
+  margin-top: 8px;
+  color: #a3a3a3;
+  font-size: 13px;
+}
+
+/* Focus areas: clean rows rather than individual cards */
+.about-focus-list {
+  border-top: 1px solid #292929;
+}
+
+.about-focus-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 22px 0;
+  border-bottom: 1px solid #292929;
+  transition: border-color 180ms ease;
+}
+
+.about-focus-item:hover {
+  border-bottom-color: #737373;
+}
+
+.about-focus-icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  padding-top: 3px;
+  color: #a3a3a3;
+  font-size: 17px;
+}
+
+.about-focus-content {
+  flex: 1;
+}
+
+.about-focus-name {
+  margin: 0;
+  color: #f5f5f5;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.about-focus-description {
+  margin: 7px 0 0;
+  color: #a3a3a3;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.about-focus-number {
+  color: #737373;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Responsive layout */
+@media (min-width: 768px) {
+  .about-section {
+    padding: 100px 32px;
+  }
+
+  .about-focus-item {
+    gap: 28px;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-section {
+    padding: 64px 22px;
+  }
+
+  .about-heading {
+    margin-bottom: 44px;
+  }
+
+  .about-title {
+    font-size: 30px;
+  }
+
+  .about-intro {
+    margin-bottom: 52px;
+  }
+
+  .about-description {
+    padding-left: 14px;
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .about-subsection-title {
+    font-size: 24px;
+  }
+
+  .about-focus-item {
+    gap: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-focus-item {
+    transition: none;
+  }
+}
+
+/* ===== About: Premium Editorial Theme ===== */
+
+.about-section {
+  color: #f5f5f5;
+}
+
+.about-section .about-title,
+.about-section .about-headline,
+.about-section .about-subsection-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+
+.about-section .about-eyebrow,
+.about-section .about-subsection-label {
+  color: #c5a44d;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.about-section .about-headline span {
+  color: #c5a44d;
+}
+
+.about-section .about-education-item::before {
+  background-color: #c5a44d;
+}
+
+.about-section .about-focus-icon {
+  color: #c5a44d;
+}
+
+.about-section .about-focus-item:hover {
+  border-bottom-color: #c5a44d;
+}
+
+.about-section .about-focus-item:hover .about-focus-icon {
+  color: #e0c777;
+}
