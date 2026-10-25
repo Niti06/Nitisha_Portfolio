@@ -1,5 +1,6 @@
 
 import React, { useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 
 const achievements = [
   {
@@ -63,6 +64,18 @@ const certifications = [
 
 const Achievements = () => {
   const [selectedCertificate, setSelectedCertificate] = useState(null);
+  const shouldReduceMotion = useReducedMotion();
+
+  const revealProps = (delay = 0) => ({
+    initial: shouldReduceMotion ? false : { opacity: 0, y: 35 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: false, amount: 0.15 },
+    transition: {
+      duration: shouldReduceMotion ? 0 : 2.9,
+      delay: shouldReduceMotion ? 0 : delay,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  });
 
   return (
     <section
@@ -71,7 +84,10 @@ const Achievements = () => {
     >
       <div className="container mx-auto px-6">
         {/* Achievements heading */}
-        <div className="mb-14 text-center">
+        <motion.div
+          {...revealProps()}
+          className="mb-14 text-center"
+        >
           <p className="mb-3 text-sm font-medium uppercase tracking-[0.3em] text-cyan-400">
             Milestones & Recognition
           </p>
@@ -84,13 +100,14 @@ const Achievements = () => {
             Highlights of my problem-solving journey, teamwork, and
             contributions beyond academics.
           </p>
-        </div>
+        </motion.div>
 
         {/* Achievement cards */}
         <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {achievements.map((item) => (
-            <article
+          {achievements.map((item, index) => (
+            <motion.article
               key={item.number}
+              {...revealProps(index * 0.15)}
               className="group flex h-full flex-col rounded-2xl border border-neutral-800 bg-neutral-950 p-7 transition duration-300 hover:-translate-y-1 hover:border-cyan-500/50"
             >
               <div className="mb-8 flex items-center justify-between">
@@ -116,12 +133,15 @@ const Achievements = () => {
               </p>
 
               <div className="mt-7 h-1 w-12 rounded-full bg-cyan-500 transition-all duration-300 group-hover:w-20" />
-            </article>
+            </motion.article>
           ))}
         </div>
 
         {/* Certifications heading */}
-        <div className="mb-12 mt-24 text-center">
+        <motion.div
+          {...revealProps()}
+          className="mb-12 mt-24 text-center"
+        >
           <h2 className="text-3xl font-semibold text-white md:text-6xl">
             Certifications
           </h2>
@@ -130,17 +150,18 @@ const Achievements = () => {
             Professional certification programs completed through Ethnus.
             Explore the details or open the original certificate.
           </p>
-        </div>
+        </motion.div>
 
         {/* Certification cards */}
         <div className="mx-auto grid max-w-5xl grid-cols-1 items-start gap-6 md:grid-cols-2">
-          {certifications.map((certificate) => {
+          {certifications.map((certificate, index) => {
             const isSelected =
               selectedCertificate === certificate.id;
 
             return (
-              <article
+              <motion.article
                 key={certificate.id}
+                {...revealProps(index * 0.2)}
                 className={`flex h-full flex-col rounded-2xl border border-neutral-800 border-t-2 ${certificate.accent} bg-neutral-950 p-6 transition duration-300 hover:border-neutral-600`}
               >
                 <div className="flex items-start gap-4">
@@ -200,7 +221,10 @@ const Achievements = () => {
                 </button>
 
                 {isSelected && (
-                  <div className="mt-3 rounded-xl border border-neutral-800 bg-black p-4">
+                  <motion.div
+                    {...revealProps()}
+                    className="mt-3 rounded-xl border border-neutral-800 bg-black p-4"
+                  >
                     <p className="text-sm leading-7 text-neutral-300">
                       {certificate.detail}
                     </p>
@@ -208,7 +232,7 @@ const Achievements = () => {
                     <p className="mt-3 text-xs text-neutral-500">
                       Certificate ID: {certificate.certificateId}
                     </p>
-                  </div>
+                  </motion.div>
                 )}
 
                 {/* Open original certificate PDF */}
@@ -221,7 +245,7 @@ const Achievements = () => {
                   View Certificate
                   <span aria-hidden="true">↗</span>
                 </a>
-              </article>
+              </motion.article>
             );
           })}
         </div>

@@ -5,6 +5,7 @@ import {
   FaArrowUpRightFromSquare,
   FaCode,
 } from "react-icons/fa6";
+import { motion, useReducedMotion } from "framer-motion";
 
 const technologies = [
   "React.js",
@@ -37,6 +38,19 @@ const responsibilities = [
 ];
 
 const Experience = () => {
+  const shouldReduceMotion = useReducedMotion();
+
+  const revealProps = (delay = 0) => ({
+    initial: shouldReduceMotion ? false : { opacity: 0, y: 35 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: false, amount: 0.15 },
+    transition: {
+      duration: shouldReduceMotion ? 0 : 2.9,
+      delay: shouldReduceMotion ? 0 : delay,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  });
+
   return (
     <section
       id="experience"
@@ -44,8 +58,10 @@ const Experience = () => {
     >
       <div className="mx-auto w-full max-w-6xl">
         {/* Section heading */}
-        <div className="mb-14 text-center">
-
+        <motion.div
+          {...revealProps()}
+          className="mb-14 text-center"
+        >
           <h2 className="text-3xl font-semibold text-white md:text-6xl">
             Work Experience
           </h2>
@@ -54,10 +70,13 @@ const Experience = () => {
             Applying technical skills to build responsive, reliable,
             and user-focused digital experiences.
           </p>
-        </div>
+        </motion.div>
 
         {/* Experience card */}
-        <article className="group relative overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-950 transition duration-300 hover:border-cyan-400/40">
+        <motion.article
+          {...revealProps(0.15)}
+          className="group relative overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-950 transition duration-300 hover:border-cyan-400/40"
+        >
           {/* Subtle decorative glow */}
           <div
             aria-hidden="true"
@@ -103,8 +122,9 @@ const Experience = () => {
 
               <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                 {responsibilities.map((item) => (
-                  <div
+                  <motion.div
                     key={item.number}
+                    {...revealProps(Number(item.number) * 0.15)}
                     className="rounded-xl border border-neutral-800 bg-black/40 p-5 transition duration-300 hover:border-cyan-400/30"
                   >
                     <span className="text-xs font-semibold tracking-widest text-cyan-400">
@@ -118,7 +138,7 @@ const Experience = () => {
                     <p className="mt-3 text-sm leading-7 text-neutral-400">
                       {item.description}
                     </p>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
@@ -130,13 +150,14 @@ const Experience = () => {
               </p>
 
               <div className="flex flex-wrap gap-2">
-                {technologies.map((technology) => (
-                  <span
+                {technologies.map((technology, index) => (
+                  <motion.span
                     key={technology}
+                    {...revealProps(index * 0.1)}
                     className="rounded-lg border border-neutral-800 bg-black px-3 py-2 text-sm text-neutral-300 transition hover:border-cyan-400/40 hover:text-cyan-300"
                   >
                     {technology}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
             </div>
@@ -144,7 +165,7 @@ const Experience = () => {
 
           {/* Bottom accent */}
           <div className="h-1 w-full bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent opacity-60 transition group-hover:opacity-100" />
-        </article>
+        </motion.article>
       </div>
     </section>
   );
